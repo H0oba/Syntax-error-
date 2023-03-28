@@ -22,7 +22,7 @@
 .navbar ul li{
     list-style: none;
     display: inline-block;
-    margin: 0 150px;
+    margin: 0 167px;
     position: relative;
 }
 .navbar ul li a{
@@ -52,7 +52,7 @@
 }
 button{
     width: 200px;
-    padding: 10px 0;
+    padding: 15px 0;
     text-align: center;
     margin: 20px 10px;
     border-radius: 25px;
@@ -60,6 +60,8 @@ button{
     font-size: medium;
     color: #fff ;
     background-color: #330099;
+    position: relative;
+    bottom: 50px;
 }
 
 
