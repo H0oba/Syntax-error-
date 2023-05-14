@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nursery Management System Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="Admin.css">
+        <script src="Admin.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <h1>Ganet El Rahman</h1>
+
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showGrades()">Grades</a></li>
+                <li><a href="#" onclick="showAttendance()">Attendance History</a></li>
+                <li><a href="#" onclick="showComplaint()">Submit a Complaint</a></li>
+                <li><a href="#" onclick="showContact()">Contact parents</a></li>
+                <li><a href="#" onclick="showSchedule()">upload Materials</a></li>
+            </ul>
+        </nav>
+        <main>
+            <div id="grades">
+                <h2>Grades</h2>
+                <form>
+                    <label for="student-name">Student Name:</label>
+                    <input type="text" id="student-name" name="student-name" required>
+                    <label for="student-name">Student ID:</label>
+                    <input type="text" id="student-ID" name="student-ID" required>
+                    <label for="student-name">Subject code:</label>
+                    <input type="text" id="Subject code" name="Subject code" required>
+                    <label for="grade">Grade:</label>
+                    <input type="number" id="grade" name="grade" min="0" max="100" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div id="attendance">
+                <h2>Attendance</h2>
+                <form>
+                    <label for="student-name">Student Name:</label>
+                    <input type="text" id="student-name" name="student-name" required>
+                    <label for="attendance">Attendance:</label>
+                    <select id="attendance" name="attendance" required>
+                        <option value="present">Present</option>
+                        <option value="absent">Absent</option>
+                    </select>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div id="complaint">
+                <h2>Submit a Complaint</h2>
+                <form>
+                   
+                    <br>
+                    <label for="complaint-description">Complaint Description:</label>
+                    <textarea id="complaint-description" name="complaint-description"></textarea>
+                    <br>
+                    <br>
+                    <button type="submit">Submit Complaint</button>
+                </form>
+            </div>
+            <div id="contact">
+                <h2>Contact parent</h2>
+			<form>
+				<label for="parent-email">Parent Email:</label>
+				<input type="email" id="parent-email" name="parent-email" required>
+                <br>
+                <br>
+				<label for="message">Message:</label>
+				<textarea id="message" name="message" required></textarea>
+                <br>
+                <br>
+				<button type="submit">Send</button>
+			</form>
+            </div>
+            <div id="Materials">
+                <h2>Materials</h2>
+                <form>
+                    <label for="course-materials">Select Course Materials:</label>
+                    <input type="file" id="course-materials" name="course-materials" accept=".pdf,.doc,.docx" required>
+                    <button type="submit">Upload</button>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>
