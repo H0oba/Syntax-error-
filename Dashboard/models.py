@@ -29,15 +29,19 @@ class Attendance(models.Model):
 
 class Teacher(models.Model):
 
+    GENDER_MALE = 'M'
+    GENDER_FEMALE = 'F'
+
     GENDER_OPTIONS = [
-        ('M', 'Male'),
-        ('F', 'Female')
+        (GENDER_MALE, 'Male'),
+        (GENDER_FEMALE, 'Female')
     ]
 
     first_name = models.CharField(max_length=50)
     second_name = models.CharField(max_length=50)
     date_of_birth = models.DateField()
-    gender = models.CharField(max_length=1, options=GENDER_OPTIONS)
+    gender = models.CharField(
+        max_length=1, choices=GENDER_OPTIONS, default=GENDER_MALE)
     phone = models.CharField(max_length=11)
     address = models.CharField(max_length=255)
     email = models.EmailField(validators=[email_validator])
@@ -48,15 +52,19 @@ class Teacher(models.Model):
 # Student Class
 class Student(models.Model):
 
+    GENDER_MALE = 'M'
+    GENDER_FEMALE = 'F'
+
     GENDER_OPTIONS = [
-        ('M', 'Male'),
-        ('F', 'Female')
+        (GENDER_MALE, 'Male'),
+        (GENDER_FEMALE, 'Female')
     ]
 
     first_name = models.CharField(max_length=50)
     second_name = models.CharField(max_length=50)
     date_of_birth = models.DateField()
-    gender = models.CharField(max_length=1, options=GENDER_OPTIONS)
+    gender = models.CharField(
+        max_length=1, choices=GENDER_OPTIONS, default=GENDER_MALE)
     phone = models.CharField(max_length=11)
     address = models.CharField(max_length=255)
     guardian_first_name = models.CharField(max_length=50)
