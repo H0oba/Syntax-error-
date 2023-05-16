@@ -3,43 +3,46 @@ from django.core.validators import EmailValidator, MaxValueValidator, MinValueVa
 
 
 email_validator = EmailValidator(message='Please enter a valid email address')
-max_score = MaxValueValidator(
-    100, message='Please enter a number less than 100')
-min_score = MinValueValidator(0, message='Please enter a number above 0')
+
+##############################################################################################
+# Quiz Class "DONE"
+##############################################################################################
 
 
 class Quiz(models.Model):
-    number = models.IntegerField(default=0)
-    score = models.IntegerField(validators=[max_score, min_score])
-    students = models.ForeignKey(
-        'Student', on_delete=models.PROTECT, default=None)
+    name = models.CharField(max_length=50)
+    subject = models.ForeignKey('Subject', on_delete=models.PROTECT)
 
     def __str__(self):
-        return f"Quiz {self.number}"
+        return f"{self.name}"
+
+
+##############################################################################################
+# Subject Class "DONE"
+##############################################################################################
 
 
 class Subject(models.Model):
     name = models.CharField(max_length=50)
-    teachers = models.ForeignKey(
-        'Teacher', on_delete=models.PROTECT, default=None)
-    students = models.ForeignKey(
-        'Student', on_delete=models.PROTECT, default=None)
-    quizzes = models.ForeignKey('Quiz', on_delete=models.CASCADE, default=None)
 
     def __str__(self):
         return f"{self.name}"
+
+##############################################################################################
+# Branch Class "DONE"
+##############################################################################################
 
 
 class Branch(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=255)
-    teachers = models.ForeignKey(
-        'Teacher', on_delete=models.PROTECT, default=None)
-    students = models.ForeignKey(
-        'Student', on_delete=models.PROTECT, default=None)
 
     def __str__(self):
         return f"{self.name}"
+
+##############################################################################################
+# Teahcer Class
+##############################################################################################
 
 
 class Teacher(models.Model):
@@ -59,9 +62,15 @@ class Teacher(models.Model):
     phone = models.CharField(max_length=11)
     address = models.CharField(max_length=255)
     email = models.EmailField(validators=[email_validator])
+    subject = models.ForeignKey(Subject, on_delete=models.PROTECT)
+    branch = models.ForeignKey(Branch, on_delete=models.PROTECT)
 
     def __str__(self):
         return f"{self.first_name} {self.second_name}"
+
+##############################################################################################
+# Student Class
+##############################################################################################
 
 
 class Student(models.Model):
@@ -83,16 +92,33 @@ class Student(models.Model):
     guardian_first_name = models.CharField(max_length=50)
     guardian_second_name = models.CharField(max_length=50)
     email = models.EmailField(validators=[email_validator])
+    branch = models.ForeignKey(Branch, on_delete=models.PROTECT)
+    subjects = models.ManyToManyField(Subject)
 
     def __str__(self):
         return f"{self.first_name} {self.second_name}"
 
+##############################################################################################
+# Attendance Class
+##############################################################################################
+
 
 class Attendance(models.Model):
-    date = models.DateField()
-    attended = models.BooleanField(default=False)
-    students = models.ForeignKey(
-        Student, on_delete=models.PROTECT, default=None)
+    date = models.DateField(unique=True)
+    students = models.ManyToManyField(Student)
 
     def __str__(self):
         return f"{self.date}"
+
+##############################################################################################
+# Scores Class "DONE"
+##############################################################################################
+
+
+class Score(models.Model):
+    score = models.IntegerField()
+    quiz = models.ForeignKey(Quiz, on_delete=models.PROTECT)
+    student = models.ForeignKey(Student, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return f"Quiz Name: {self.quiz.name}"
