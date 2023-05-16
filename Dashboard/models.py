@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import EmailValidator, MaxValueValidator, MinValueValidator
+from django.core.validators import EmailValidator
 
 
 email_validator = EmailValidator(message='Please enter a valid email address')
@@ -122,3 +122,15 @@ class Score(models.Model):
 
     def __str__(self):
         return f"Quiz Name: {self.quiz.name}"
+
+
+class StudentLogin(models.Model):
+    username = models.CharField(max_length=50, unique=True)
+    password = models.CharField(max_length=50)
+    student = models.OneToOneField(Student, on_delete=models.CASCADE)
+
+
+class TeacherLogin(models.Model):
+    username = models.CharField(max_length=50, unique=True)
+    password = models.CharField(max_length=50)
+    teacher = models.OneToOneField(Teacher, on_delete=models.CASCADE)

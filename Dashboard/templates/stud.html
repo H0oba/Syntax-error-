@@ -1,153 +1,167 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Nursery Management System Dashboard</title>
-        <link rel="stylesheet" type="text/css" href="stud.css">
-        <script src="stude.js"></script>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nursery Management System Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css\stud.css' %}" />
+    <script src="{% static 'js\stude.js' %}"></script>
+  </head>
 
-    <body>
-        <header>
-            <h1>Ganet El Rahman</h1>
-
-        </header>
-        <nav>
-            <ul>
-                <li><a href="#" onclick="showGrades()">Grades</a></li>
-                <li><a href="#" onclick="showAttendance()">Attendance History</a></li>
-                <li><a href="#" onclick="showComplaint()">Submit a Complaint</a></li>
-                <li><a href="#" onclick="showContact()">Contact Teachers</a></li>
-                <li><a href="#" onclick="showSchedule()">View Schedule</a></li>
-            </ul>
-        </nav>
-        <main>
-            <div id="grades">
-                <h2>Grades</h2>
-                <table>
-                    <tr>
-                        <th>Subject</th>
-                        <th>Grade</th>
-                    </tr>
-                    <tr>
-                        <td>Art</td>
-                        <td>90%</td>
-                    </tr>
-                    <tr>
-                        <td>Religon</td>
-                        <td>90%</td>
-                    </tr>
-                    <tr>
-                        <td>English</td>
-                        <td>75%</td>
-                    </tr>
-                    <tr>
-                        <td>Activtes</td>
-                        <td>80%</td>
-                    </tr>
-                    <tr>
-                        <td>Arabic</td>
-                        <td>85%</td>
-                    </tr>
-                </table>
-            </div>
-            <div id="attendance">
-                <h2>Attendance History</h2>
-                <table>
-                    <tr>
-                        <th>Date</th>
-                        <th>Attendance</th>
-                    </tr>
-                    <tr>
-                        <td>13/02/2023</td>
-                        <td>Abssent</td>
-                    </tr>
-                    <tr>
-                        <td>18/02/2023</td>
-                        <td>Abssent</td>
-                    </tr>
-                    <tr>
-                        <td>15/03/2023</td>
-                        <td>Abssent</td>
-                    </tr>
-                    <tr>
-                        <td>20/03/2023</td>
-                        <td>Abssent</td>
-                    </tr>
-                    <tr>
-                        <td>25/03/2023</td>
-                        <td>Abssent</td>
-                    </tr>
-                    <tr>
-                        <td>01/04/2023</td>
-                        <td>Abssent</td>
-                    </tr>
-                </table>
-            </div>
-            <div id="complaint">
-                <h2>Submit a Complaint</h2>
-                <form>
-                   
-                    <br>
-                    <label for="complaint-description">Complaint Description:</label>
-                    <textarea id="complaint-description" name="complaint-description"></textarea>
-                    <br>
-                    <button type="submit">Submit Complaint</button>
-                </form>
-            </div>
-            <div id="contact">
-                <h2>Contact Teachers</h2>
-                <form>
-                    <label for="teacher">Select Teacher:</label>
-                    <select id="teacher" name="teacher">
-                        <option value="1">Mr. Ahmed</option>
-                        <option value="2">Mrs. Jana</option>
-                        <option value="3">Mrs. Menna</option>
-                    </select>
-                    <br>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message"></textarea>
-                    <br>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-            <div id="schedule">
-                <h2>View Schedule</h2>
-                <table>
-                    <tr>
-                        <th>Day</th>
-                        <th>Subject</th>
-                        <th>Time</th>
-                    </tr>
-                    <tr>
-                        <td>Sunday</td>
-                        <td> Art <br><br> English </td>
-                        <td> 8:00 - 9:00 AM <br><br> 9:30 - 10:30 AM</td>
-                    </tr>
-                    <tr>
-                        <td>Monday</td>
-                        <td> Religon <br><br> Arabic </td>
-                        <td> 8:00 - 9:00 AM <br><br> 9:30 - 10:30 AM</td>
-                    </tr>
-                    <tr>
-                        <td>Tuesday</td>
-                        <td>Arabic</td>
-                        <td>10:00 - 11:00 AM</td>
-                    </tr>
-                    <tr>
-                        <td>Wednesday</td>
-                        <td>English</td>
-                        <td>10:30 - 11:30 AM</td>
-                    </tr>
-                    <tr>
-                        <td>Thusrsday</td>
-                        <td>Activtes</td>
-                        <td>11:00 - 12:00 AM</td>
-                    </tr>
-                </table>
-            </div>
-        </main>
-    </body>
+  <body>
+    <header>
+      <h1>Gannet El Rahman</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="#" onclick="showGrades()">Grades</a></li>
+        <li><a href="#" onclick="showAttendance()">Attendance History</a></li>
+        <li><a href="#" onclick="showComplaint()">Submit a Complaint</a></li>
+        <li><a href="#" onclick="showContact()">Contact Teachers</a></li>
+        <li><a href="#" onclick="showSchedule()">View Schedule</a></li>
+      </ul>
+    </nav>
+    <main>
+      <div id="grades">
+        <h2>Grades</h2>
+        <table>
+          <tr>
+            <th>Subject</th>
+            <th>Grade</th>
+          </tr>
+          <tr>
+            <td>Art</td>
+            <td>90%</td>
+          </tr>
+          <tr>
+            <td>Religon</td>
+            <td>90%</td>
+          </tr>
+          <tr>
+            <td>English</td>
+            <td>75%</td>
+          </tr>
+          <tr>
+            <td>Activtes</td>
+            <td>80%</td>
+          </tr>
+          <tr>
+            <td>Arabic</td>
+            <td>85%</td>
+          </tr>
+        </table>
+      </div>
+      <div id="attendance">
+        <h2>Attendance History</h2>
+        <table>
+          <tr>
+            <th>Date</th>
+            <th>Attendance</th>
+          </tr>
+          <tr>
+            <td>13/02/2023</td>
+            <td>Abssent</td>
+          </tr>
+          <tr>
+            <td>18/02/2023</td>
+            <td>Abssent</td>
+          </tr>
+          <tr>
+            <td>15/03/2023</td>
+            <td>Abssent</td>
+          </tr>
+          <tr>
+            <td>20/03/2023</td>
+            <td>Abssent</td>
+          </tr>
+          <tr>
+            <td>25/03/2023</td>
+            <td>Abssent</td>
+          </tr>
+          <tr>
+            <td>01/04/2023</td>
+            <td>Abssent</td>
+          </tr>
+        </table>
+      </div>
+      <div id="complaint">
+        <h2>Submit a Complaint</h2>
+        <form>
+          <br />
+          <label for="complaint-description">Complaint Description:</label>
+          <textarea
+            id="complaint-description"
+            name="complaint-description"
+          ></textarea>
+          <br />
+          <button type="submit">Submit Complaint</button>
+        </form>
+      </div>
+      <div id="contact">
+        <h2>Contact Teachers</h2>
+        <form>
+          <label for="teacher">Select Teacher:</label>
+          <select id="teacher" name="teacher">
+            <option value="1">Mr. Ahmed</option>
+            <option value="2">Mrs. Jana</option>
+            <option value="3">Mrs. Menna</option>
+          </select>
+          <br />
+          <label for="message">Message:</label>
+          <textarea id="message" name="message"></textarea>
+          <br />
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+      <div id="schedule">
+        <h2>View Schedule</h2>
+        <table>
+          <tr>
+            <th>Day</th>
+            <th>Subject</th>
+            <th>Time</th>
+          </tr>
+          <tr>
+            <td>Sunday</td>
+            <td>
+              Art <br /><br />
+              English
+            </td>
+            <td>
+              8:00 - 9:00 AM <br /><br />
+              9:30 - 10:30 AM
+            </td>
+          </tr>
+          <tr>
+            <td>Monday</td>
+            <td>
+              Religon <br /><br />
+              Arabic
+            </td>
+            <td>
+              8:00 - 9:00 AM <br /><br />
+              9:30 - 10:30 AM
+            </td>
+          </tr>
+          <tr>
+            <td>Tuesday</td>
+            <td>Arabic</td>
+            <td>10:00 - 11:00 AM</td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td>English</td>
+            <td>10:30 - 11:30 AM</td>
+          </tr>
+          <tr>
+            <td>Thusrsday</td>
+            <td>Activtes</td>
+            <td>11:00 - 12:00 AM</td>
+          </tr>
+        </table>
+      </div>
+    </main>
+  </body>
 </html>
