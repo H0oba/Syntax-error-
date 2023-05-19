@@ -7,12 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
     <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-
+    <style>
+      .message {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        background-color: #f8d7da;
+        color: #721c24;
+        z-index: 9999;
+      }
+    </style>
     <title>Login Page</title>
   </head>
   <body>
     {% if messages %} {% for message in messages %}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <div
+      class="alert alert-warning alert-dismissible fade show message"
+      role="alert"
+    >
       {{ message }}
       <button
         type="button"
@@ -53,7 +67,11 @@
             name="password"
           />
         </div>
-        <input type="submit" value="Submit" class="btn btn-secondary" />
+        <input
+          type="submit"
+          value="Submit"
+          class="btn btn-primary btn-lg mt-5"
+        />
       </form>
     </div>
   </body>

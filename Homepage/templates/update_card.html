@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Update Card</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .item {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0cd136;
+    }
+
+    .icon-button {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .delete-button {
+      background-color: #f44336;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .delete-button:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <form method="POST" action="/HomePage/update_card/{% if card.id %}{{ card.id }}/{% endif %}">
+    <div class="item item-1">
+      <div class="card">
+
+         <h1>Create a New Card</h1>
+        <span class="category">
+          <label for="category">Category:</label>
+          <input type="text" id="category" name="category" placeholder="Enter a category" value="">
+        </span>
+        <h2>
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" placeholder="Intersting title" value="">
+        </h2>
+        <p>
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" rows="4" cols="50" placeholder="description"></textarea>
+        </p>
+        <p>
+          <label for="link">Watch More Link:</label>
+          <input type="url" id="link" name="link" placeholder="https://example.com" value="">
+        </p>
+
+        <p>
+         <label for="image">Upload Image:</label>
+         <input type="file" id="image" name="image">
+       </p>
+
+
+       <div class="buttons">
+        <button type="submit">Save Changes</button>
+      </div>
+    </div>
+
+    <div class="icon-button">
+      <a href="{% url 'HomePage:delete_card' %}">
+        <button type="button" class="delete-button">Delete Card</button>
+      </a>
+    </div>
+
+    {% if card.id %}
+      <input type="hidden" name="card_id" value="{{ card.id }}">
+    {% endif %}
+  </form>
+</body>
+</html>

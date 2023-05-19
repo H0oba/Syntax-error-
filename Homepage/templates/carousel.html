@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carousel</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+      }
+      
+      .carousel {
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: scroll;
+          scroll-snap-type: x mandatory;
+      }
+      
+      .card {
+          flex: 0 0 auto;
+          width: 300px;
+          margin-right: 20px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          scroll-snap-align: start;
+      }
+      
+      .card img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+      }
+      
+      .card h2 {
+          margin: 10px;
+          font-size: 18px;
+      }
+      
+      .card p {
+          margin: 10px;
+          font-size: 14px;
+          color: #555;
+      }
+      
+      .card a {
+          display: block;
+          margin: 10px;
+          color: #fff;
+          background-color: #007bff;
+          padding: 8px 12px;
+          text-decoration: none;
+          border-radius: 5px;
+          text-align: center;
+          font-weight: bold;
+      }
+      
+      .card a:hover {
+          background-color: #0056b3;
+      }
+  </style>
+</head>
+<body>
+    <div id="carousel" class="carousel">
+      {% for card in cards %}
+      <div class="card">
+          {% if card.image %}
+              <img src="{{ card.image.url }}" alt="{{ card.title }}">
+          {% else %}
+              <!-- Handle the case when the image is not provided -->
+              <img src="{'/HomePage/templates/About1.jpg'}" alt="Placeholder Image">
+          {% endif %}
+          <h2>{{ card.title }}</h2>
+          <p>{{ card.description }}</p>
+          <a href="{{ card.link }}">Read More</a>
+      </div>
+  {% endfor %}
+  
+    </div>
+    <!-- Initialize the carousel -->
+</body>
+</html>

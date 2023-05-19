@@ -73,7 +73,7 @@ class Student(models.Model):
     email = models.EmailField(validators=[email_validator])
     subjects = models.ManyToManyField(Subject, related_name='students')
     branch = models.ForeignKey(Branch, on_delete=models.PROTECT ,related_name='students')
-    user = models.OneToOneField(User, null=True ,on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=True ,on_delete=models.CASCADE,related_name='student')
 
 
     def __str__(self):
@@ -89,7 +89,7 @@ class Attendance(models.Model):
     def __str__(self):
         return f"{self.date}"
 
-# Complaint Class
+#Complaint Class
 
 class Complaint(models.Model):
     description = models.CharField(max_length=1000)

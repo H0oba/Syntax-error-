@@ -4,5 +4,5 @@ from . import views
 
 # URLConfig
 urlpatterns = [
-    path('', views.index)
+    path('<int:pk>/', views.dashboard),
 ]

@@ -1,28 +1,31 @@
 from django.shortcuts import render
-from .models import Student, Teacher, Attendance, Branch, Subject, Complaint
-
-#student_id = 1
-#student = Student.objects.get(id= student_id)
-#subjects = student.subjects.all()
-#attendance = student.attendance.all()
-
-def index(request):
-    return render(request, 'stud.html', {
-        'students': Student.objects.all(),
-        'teachers': Teacher.objects.all(),
-        'attendances': Attendance.objects.all(),
-        'branches': Branch.objects.all(),
-        'subjects': Subject.objects.all(),
-        #'subjects_taken': subjects,
-        #'attendance': attendance,
-    })
+from .models import Student, Teacher, Attendance, Branch, Subject, User
 
 
-def submit_complaint(request, student):
-    if request.method == 'POST':
-        description_rec = request.POST['Complaint']
+def dashboard(request, pk):
+    
+    students = Student.objects.all()
+    teachers = Teacher.objects.all()
+    attendance = Attendance.objects.all()
+    branch = Branch.objects.all()
+    subjects = Subject.objects.all()
+    user_log = User.objects.get(id=pk)
+    
+    student = students.get(user = user_log)
+    subjects_taken = student.subjects.all()
+    attendance_taken = student.attendance.all()
 
-        new_complaint = Complaint(description = description_rec,student = student)
-        new_complaint.save()
+    context = {
+        'students': students,
+        'teachers': teachers,
+        'attendances': attendance,
+        'branches': branch,
+        'subjects': subjects,
+        'subjects_taken': subjects_taken,
+        'attendance': attendance_taken,
+        'student': student,
+    }
 
-    return render(request, 'stud.html',{})
+    return render(request, 'stud.html', context)
+
+#############################################################

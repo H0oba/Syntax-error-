@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>card_detail</title>
+</head>
+<body>
+   <div class="item {{pk}}">
+      <div class="header-text">
+        <span class="category">{{ card.category }}</span>
+        <h2>{{ card.title }}</h2>
+        <p>{{ card.description }}</p>
+        <div class="buttons">
+          <div class="icon-button">
+            <a href="#"><i class="fa fa-play"></i>{{ card.link }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</body>
+</html>
