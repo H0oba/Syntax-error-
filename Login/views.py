@@ -10,7 +10,7 @@ def login_user(request):
 		if user is not None:
 			login(request, user)
 			# return redirect('home')
-			return redirect('login')
+			return redirect('/Dashboard')
 		else:
 			messages.success(request, ("There Was An Error Logging In, Try Again..."))
 			return redirect('login')
