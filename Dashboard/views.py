@@ -1,7 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from .models import Student, Teacher, Attendance, Branch, Subject, Quiz, Score
+from .models import Student, Teacher, Attendance, Branch, Subject, Complaint
 
+student_id = 1
+student = Student.objects.get(id= student_id)
+subjects = student.subjects.all()
+attendance = student.attendance.all()
 
 def index(request):
     return render(request, 'stud.html', {
@@ -10,6 +13,15 @@ def index(request):
         'attendances': Attendance.objects.all(),
         'branches': Branch.objects.all(),
         'subjects': Subject.objects.all(),
-        'quizzes': Quiz.objects.all(),
-        'scores': Score.objects.all(),
+        'subjects_taken': subjects,
+        'attendance': attendance,
     })
+
+def submit_complaint(request, student):
+    if request.method == 'POST':
+        description_rec = request.POST['Complaint']
+
+        new_complaint = Complaint(description = description_rec,student = student)
+        new_complaint.save()
+
+    return render(request, 'stud.html',{})

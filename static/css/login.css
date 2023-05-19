@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@300&display=swap'
+);
+
+body
+{
+display: flex; /* Set the body element to use flexbox layout */
+justify-content: center; /* Center align the child elements horizontally */
+align-items: center;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+background-color: #34342b;
+color:#000000;
+}
+
+.form-box {
+box-sizing: border-box;
+width: 1000px;
+background: #FFFFFF;
+overflow: hidden;
+border-radius: 16px;
+margin: 100px auto auto auto;
+height: 700px;
+box-shadow: 0px 0px 25px 4px rgba(0,0,0,0.84);
+}
+
+.form {
+  position: absolute;
+  display: inline-block;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  padding: 25px 20px 20px;
+  margin: 0px auto 0px 110px;
+  width: 350px;
+}
+
+/*Form text*/
+.title {
+  font-weight: bold;
+  font-size: 40px;
+  margin: 30px;
+}
+
+/*Inputs box*/
+.form-container {
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #fff;
+  margin: 15px 0 0px;
+  width: 100%;
+}
+
+.input {
+  background: none;
+  border: 0;
+  outline: 0;
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  font-size: .9rem;
+  padding: 8px 15px;
+  margin: 0px 0px 0px;
+}
+
+.form-section {
+  padding: 16px;
+  font-size: .85rem;
+  background-color: #e0ecfb;
+  box-shadow: rgb(0 0 0 / 8%) 0 -1px;
+}
+
+.form-section a {
+  font-weight: bold;
+  color: #dd345e;
+  transition: color .3s ease;
+}
+
+.form-section a:hover {
+  color: #005ce6;
+  text-decoration: underline;
+}
+
+/*Button*/
+/*.form button {
+  background-color: #46008d;
+  color: #fff;
+  border: 0;
+  border-radius: 24px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .3s ease;
+  height: 50px;
+  margin: 50px 0px 0px 0px;
+  width: 300px;
+}*/
+
+/*.form button:hover {
+  background-color: #005ce6;
+}*/
+
+.remember
+{
+margin: 40px 0px 0px 0px;
+}
+img.Logo
+{
+  display: flex;
+  width:175px;
+  margin: 50px auto 0px auto;
+}
+
+img.portrait
+{
+  width: 400px;
+  display: inline-block;
+  float: left;
+  margin: 0px 0px 0px 0px;
+}

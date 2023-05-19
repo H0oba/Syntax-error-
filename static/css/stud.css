@@ -83,3 +83,8 @@ cursor: pointer;
 button:hover {
 background-color: #005580;
 }
+
+input {
+margin-top: 6px;
+width:max-content;
+}

@@ -1,25 +1,10 @@
 from django.db import models
 from django.core.validators import EmailValidator
-
+from django.contrib.auth.models import User
 
 email_validator = EmailValidator(message='Please enter a valid email address')
 
-##############################################################################################
-# Quiz Class "DONE"
-##############################################################################################
-
-
-class Quiz(models.Model):
-    name = models.CharField(max_length=50)
-    subject = models.ForeignKey('Subject', on_delete=models.PROTECT)
-
-    def __str__(self):
-        return f"{self.name}"
-
-
-##############################################################################################
-# Subject Class "DONE"
-##############################################################################################
+# Subject Class
 
 
 class Subject(models.Model):
@@ -28,9 +13,7 @@ class Subject(models.Model):
     def __str__(self):
         return f"{self.name}"
 
-##############################################################################################
-# Branch Class "DONE"
-##############################################################################################
+# Branch Class
 
 
 class Branch(models.Model):
@@ -40,9 +23,7 @@ class Branch(models.Model):
     def __str__(self):
         return f"{self.name}"
 
-##############################################################################################
 # Teahcer Class
-##############################################################################################
 
 
 class Teacher(models.Model):
@@ -62,15 +43,13 @@ class Teacher(models.Model):
     phone = models.CharField(max_length=11)
     address = models.CharField(max_length=255)
     email = models.EmailField(validators=[email_validator])
-    subject = models.ForeignKey(Subject, on_delete=models.PROTECT)
-    branch = models.ForeignKey(Branch, on_delete=models.PROTECT)
+    subject = models.ForeignKey(Subject, on_delete=models.PROTECT, related_name='teachers')
+    branch = models.ForeignKey(Branch, on_delete=models.PROTECT, related_name='teachers')
 
     def __str__(self):
         return f"{self.first_name} {self.second_name}"
 
-##############################################################################################
 # Student Class
-##############################################################################################
 
 
 class Student(models.Model):
@@ -92,45 +71,27 @@ class Student(models.Model):
     guardian_first_name = models.CharField(max_length=50)
     guardian_second_name = models.CharField(max_length=50)
     email = models.EmailField(validators=[email_validator])
-    branch = models.ForeignKey(Branch, on_delete=models.PROTECT)
-    subjects = models.ManyToManyField(Subject)
+    subjects = models.ManyToManyField(Subject, related_name='students')
+    branch = models.ForeignKey(Branch, on_delete=models.PROTECT ,related_name='students')
 
     def __str__(self):
-        return f"{self.first_name} {self.second_name}"
+        return f"{self.first_name} {self.second_name} ID: {self.pk}"
 
-##############################################################################################
 # Attendance Class
-##############################################################################################
 
 
 class Attendance(models.Model):
     date = models.DateField(unique=True)
-    students = models.ManyToManyField(Student)
+    students = models.ManyToManyField(Student, related_name='attendance')
 
     def __str__(self):
         return f"{self.date}"
 
-##############################################################################################
-# Scores Class "DONE"
-##############################################################################################
+#Complaint Class
 
-
-class Score(models.Model):
-    score = models.IntegerField()
-    quiz = models.ForeignKey(Quiz, on_delete=models.PROTECT)
-    student = models.ForeignKey(Student, on_delete=models.PROTECT)
+class Complaint(models.Model):
+    description = models.CharField(max_length=1000)
+    student = models.ForeignKey(Student, on_delete=models.PROTECT ,related_name='complaints')
 
     def __str__(self):
-        return f"Quiz Name: {self.quiz.name}"
-
-
-class StudentLogin(models.Model):
-    username = models.CharField(max_length=50, unique=True)
-    password = models.CharField(max_length=50)
-    student = models.OneToOneField(Student, on_delete=models.CASCADE)
-
-
-class TeacherLogin(models.Model):
-    username = models.CharField(max_length=50, unique=True)
-    password = models.CharField(max_length=50)
-    teacher = models.OneToOneField(Teacher, on_delete=models.CASCADE)
+        return f"Complaint ({self.pk})"
